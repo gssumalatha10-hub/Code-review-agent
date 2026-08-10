@@ -1,0 +1,201 @@
+INFO: Reading rc options for 'build' from /home/sumalatha.s/SUMAGS/Workspace/iceoryx/.bazelrc:
+  'build' options: --enable_platform_specific_config --noenable_bzlmod
+ERROR: --noenable_bzlmod :: Unrecognized option: --noenable_bzlmod
+-- The C compiler identification is GNU 13.3.0
+-- The CXX compiler identification is GNU 13.3.0
+-- Detecting C compiler ABI info
+-- Detecting C compiler ABI info - done
+-- Check for working C compiler: /usr/bin/cc - skipped
+-- Detecting C compile features
+-- Detecting C compile features - done
+-- Detecting CXX compiler ABI info
+-- Detecting CXX compiler ABI info - done
+-- Check for working CXX compiler: /usr/bin/c++ - skipped
+-- Detecting CXX compile features
+-- Detecting CXX compile features - done
+-- [i] IOX_REPRODUCIBLE_BUILD: ON
+-- [i] <<<<<<<<<<<<< Start iceoryx_platform configuration: >>>>>>>>>>>>>
+-- [i] IOX_PLATFORM_TEMP_DIR: /tmp/
+-- [i] IOX_PLATFORM_LOCK_FILE_PATH_PREFIX: /tmp/
+-- [i] IOX_PLATFORM_UDS_SOCKET_PATH_PREFIX: /tmp/
+-- [i] IOX_PLATFORM_DEFAULT_CONFIG_LOCATION: /etc/
+-- [i] IOX_PLATFORM_FEATURE_ACL: ON
+-- [i] <<<<<<<<<<<<<< End iceoryx_platform configuration: >>>>>>>>>>>>>>
+-- The package 'iceoryx_platform' is used in source code version.
+-- [i] <<<<<<<<<<<<< Start iceoryx_hoofs configuration: >>>>>>>>>>>>>
+-- [i] IOX_MINIMAL_LOG_LEVEL: Trace
+-- [i] IOX_MAX_NAMED_PIPE_MESSAGE_SIZE: 4096
+-- [i] IOX_MAX_NAMED_PIPE_NUMBER_OF_MESSAGES: 10
+-- [i] <<<<<<<<<<<<<< End iceoryx_hoofs configuration: >>>>>>>>>>>>>>
+-- Performing Test CMAKE_HAVE_LIBC_PTHREAD
+-- Performing Test CMAKE_HAVE_LIBC_PTHREAD - Success
+-- Found Threads: TRUE  
+-- The package 'iceoryx_hoofs' is used in source code version.
+-- Configuring done (0.1s)
+-- Generating done (0.0s)
+-- Build files have been written to: /home/sumalatha.s/SUMAGS/Workspace/iceoryx/build/dependencies/cpptoml/download
+[ 11%] Creating directories for 'ext_cpptoml'
+[ 22%] Performing download step (git clone) for 'ext_cpptoml'
+Cloning into 'src'...
+HEAD is now at fededad one-char typo
+Submodule 'deps/meta-cmake' (https://github.com/meta-toolkit/meta-cmake.git) registered for path 'deps/meta-cmake'
+Cloning into '/home/sumalatha.s/SUMAGS/Workspace/iceoryx/build/dependencies/cpptoml/src/deps/meta-cmake'...
+Submodule path 'deps/meta-cmake': checked out 'db7ff976c430a6cb6cbd03ae691be04cfaac0a07'
+[ 33%] Performing update step for 'ext_cpptoml'
+[ 44%] No patch step for 'ext_cpptoml'
+[ 55%] No configure step for 'ext_cpptoml'
+[ 66%] No build step for 'ext_cpptoml'
+[ 77%] No install step for 'ext_cpptoml'
+[ 88%] No test step for 'ext_cpptoml'
+[100%] Completed 'ext_cpptoml'
+[100%] Built target ext_cpptoml
+-- Applying patch for minimal cmake version to cpptoml
+-- The C compiler identification is GNU 13.3.0
+-- The CXX compiler identification is GNU 13.3.0
+-- Detecting C compiler ABI info
+-- Detecting C compiler ABI info - done
+-- Check for working C compiler: /usr/bin/cc - skipped
+-- Detecting C compile features
+-- Detecting C compile features - done
+-- Detecting CXX compiler ABI info
+-- Detecting CXX compiler ABI info - done
+-- Check for working CXX compiler: /usr/bin/c++ - skipped
+-- Detecting CXX compile features
+-- Detecting CXX compile features - done
+-- Could NOT find Doxygen (missing: DOXYGEN_EXECUTABLE) 
+-- Configuring done (0.7s)
+-- Generating done (0.0s)
+-- Build files have been written to: /home/sumalatha.s/SUMAGS/Workspace/iceoryx/build/dependencies/cpptoml/build
+Install the project...
+-- Install configuration: ""
+-- Installing: /home/sumalatha.s/SUMAGS/Workspace/iceoryx/build/dependencies/install/include/cpptoml.h
+-- Installing: /home/sumalatha.s/SUMAGS/Workspace/iceoryx/build/dependencies/install/lib/cmake/cpptoml/cpptomlTargets.cmake
+-- Installing: /home/sumalatha.s/SUMAGS/Workspace/iceoryx/build/dependencies/install/lib/cmake/cpptoml/cpptomlConfigVersion.cmake
+-- Installing: /home/sumalatha.s/SUMAGS/Workspace/iceoryx/build/dependencies/install/lib/cmake/cpptoml/cpptomlConfig.cmake
+-- [i] <<<<<<<<<<<<< Start iceoryx_posh configuration: >>>>>>>>>>>>>
+-- [i] Using m:n communication!
+-- [i] IOX_MAX_PUBLISHERS: 512
+-- [i] IOX_MAX_SUBSCRIBERS: 1024
+-- [i] IOX_MAX_INTERFACE_NUMBER: 4
+-- [i] IOX_MAX_SUBSCRIBERS_PER_PUBLISHER: 256
+-- [i] IOX_MAX_CHUNKS_ALLOCATED_PER_PUBLISHER_SIMULTANEOUSLY: 8
+-- [i] IOX_MAX_PUBLISHER_HISTORY: 16
+-- [i] IOX_MAX_CHUNKS_HELD_PER_SUBSCRIBER_SIMULTANEOUSLY: 256
+-- [i] IOX_MAX_PROCESS_NUMBER: 300
+-- [i] IOX_MAX_NODE_NUMBER: 300
+-- [i] IOX_MAX_NODE_PER_PROCESS: 1
+-- [i] IOX_MAX_SHM_SEGMENTS: 100
+-- [i] IOX_MAX_NUMBER_OF_MEMPOOLS: 32
+-- [i] IOX_MAX_NUMBER_OF_CONDITION_VARIABLES: 1024
+-- [i] IOX_MAX_NODE_NAME_LENGTH: 87
+-- [i] IOX_MAX_ID_STRING_LENGTH: 100
+-- [i] IOX_MAX_RUNTIME_NAME_LENGTH: 87
+-- [i] IOX_MAX_SERVERS: 128
+-- [i] IOX_MAX_CLIENTS: 512
+-- [i] IOX_MAX_RESPONSES_PROCESSED_SIMULTANEOUSLY: 16
+-- [i] IOX_MAX_RESPONSE_QUEUE_CAPACITY: 16
+-- [i] IOX_MAX_REQUEST_QUEUE_CAPACITY: 1024
+-- [i] IOX_MAX_CLIENTS_PER_SERVER: 256
+-- [i] IOX_MAX_NUMBER_OF_NOTIFIERS: 256
+-- [i] IOX_MAX_REQUESTS_PROCESSED_SIMULTANEOUSLY: 4
+-- [i] IOX_DEFAULT_RESOURCE_PREFIX: iox1
+-- [i] IOX_EXPERIMENTAL_POSH_FLAG: false
+-- [i] IOX_INTERPROCESS_LOCK: mutex
+-- [i] IOX_INTERPROCESS_SEMAPHORE: UnnamedSemaphore
+-- [i] IOX_ROUDI_DEFAULT_MONITORING_MODE_ON: false
+-- [i] <<<<<<<<<<<<<< End iceoryx_posh configuration: >>>>>>>>>>>>>>
+-- The package 'iceoryx_posh' is used in source code version.
+
+       CMake Options
+          CMAKE_BUILD_TYPE.....................: Release
+          CMAKE_TOOLCHAIN_FILE.................: 
+          CMAKE_EXPORT_COMPILE_COMMANDS........: ON
+
+       iceoryx Options
+          BINDING_C............................: ON
+          BUILD_ALL............................: OFF
+          BUILD_DOC............................: OFF
+          BUILD_SHARED_LIBS....................: OFF
+          BUILD_STRICT.........................: OFF
+          BUILD_TEST...........................: OFF
+          CCACHE...............................: ON (ccache not found)
+          COVERAGE.............................: OFF
+          DOWNLOAD_TOML_LIB....................: ON
+          EXAMPLES.............................: OFF
+          INTROSPECTION........................: OFF
+          ONE_TO_MANY_ONLY ....................: OFF
+          IOX_PLATFORM_PATH....................: 
+          ROUDI_ENVIRONMENT....................: OFF
+          ADDRESS_SANITIZER....................: OFF
+          THREAD_SANITIZER.....................: OFF
+          TEST_WITH_ADDITIONAL_USER ...........: OFF
+          TEST_WITH_HUGE_PAYLOAD ..............: OFF
+          TOML_CONFIG..........................: ON
+          IOX_EXPERIMENTAL_32_64_BIT_MIX_MODE..: OFF
+          IOX_EXPERIMENTAL_POSH................: OFF
+          IOX_REPRODUCIBLE_BUILD...............: ON
+          IOX_ROUDI_DEFAULT_MONITORING_MODE....: OFF
+
+       Build Properties
+          platform..................: Linux
+          project name..............: iceoryx_package
+          c compiler................: /usr/bin/cc
+          c++ compiler..............: /usr/bin/c++
+          c flags...................: 
+          c++ flags.................: 
+          generator platform........: 
+          cmake.....................: 3.28.3
+       Additional flags from iceoryx platform
+          c++ standard..............: 17
+          c flags...................: 
+          c warning flags...........: -W-Wall-Wextra-Wuninitialized-Wpedantic-Wstrict-aliasing-Wcast-align-Wconversion
+          c++ flags.................: 
+          c++ flags for tests.......: 
+          c++ warning flags.........: -W-Wall-Wextra-Wuninitialized-Wpedantic-Wstrict-aliasing-Wcast-align-Wconversion-Wno-noexcept-type
+
+-- Configuring done (7.1s)
+-- Generating done (0.1s)
+-- Build files have been written to: /home/sumalatha.s/SUMAGS/Workspace/iceoryx/build
+[  0%] Building CXX object platform/CMakeFiles/iceoryx_platform.dir/generic/source/logging.cpp.o
+[  1%] Building CXX object platform/CMakeFiles/iceoryx_platform.dir/linux/source/_string.cpp.o
+[  1%] Building CXX object platform/CMakeFiles/iceoryx_platform.dir/linux/source/fnctl.cpp.o
+[  2%] Building CXX object platform/CMakeFiles/iceoryx_platform.dir/linux/source/file.cpp.o
+[  2%] Building CXX object platform/CMakeFiles/iceoryx_platform.dir/linux/source/mman.cpp.o
+[  2%] Building CXX object platform/CMakeFiles/iceoryx_platform.dir/linux/source/acl_feature_off.cpp.o
+[  3%] Building CXX object platform/CMakeFiles/iceoryx_platform.dir/linux/source/grp.cpp.o
+[  3%] Building CXX object platform/CMakeFiles/iceoryx_platform.dir/linux/source/socket.cpp.o
+[  4%] Building CXX object platform/CMakeFiles/iceoryx_platform.dir/linux/source/stdlib.cpp.o
+[  4%] Building CXX object platform/CMakeFiles/iceoryx_platform.dir/linux/source/unistd.cpp.o
+[  6%] Building CXX object platform/CMakeFiles/iceoryx_platform.dir/linux/source/mqueue.cpp.o
+[  6%] Building CXX object platform/CMakeFiles/iceoryx_platform.dir/linux/source/acl_feature_on.cpp.o
+In file included from /home/sumalatha.s/SUMAGS/Workspace/iceoryx/iceoryx_platform/linux/source/acl_feature_off.cpp:17:
+/home/sumalatha.s/SUMAGS/Workspace/iceoryx/iceoryx_platform/linux/include/iceoryx_platform/acl.hpp:25:10: fatal error: sys/acl.h: No such file or directory
+   25 | #include <sys/acl.h>
+      |          ^~~~~~~~~~~
+compilation terminated.
+gmake[2]: *** [platform/CMakeFiles/iceoryx_platform.dir/build.make:104: platform/CMakeFiles/iceoryx_platform.dir/linux/source/acl_feature_off.cpp.o] Error 1
+gmake[2]: *** Waiting for unfinished jobs....
+In file included from /home/sumalatha.s/SUMAGS/Workspace/iceoryx/iceoryx_platform/linux/source/acl_feature_on.cpp:17:
+/home/sumalatha.s/SUMAGS/Workspace/iceoryx/iceoryx_platform/linux/include/iceoryx_platform/acl.hpp:25:10: fatal error: sys/acl.h: No such file or directory
+   25 | #include <sys/acl.h>
+      |          ^~~~~~~~~~~
+compilation terminated.
+gmake[2]: *** [platform/CMakeFiles/iceoryx_platform.dir/build.make:118: platform/CMakeFiles/iceoryx_platform.dir/linux/source/acl_feature_on.cpp.o] Error 1
+gmake[1]: *** [CMakeFiles/Makefile2:177: platform/CMakeFiles/iceoryx_platform.dir/all] Error 2
+gmake: *** [Makefile:156: all] Error 2
+[2026-08-06 17:45:52] [INFO] Starting code review pipeline...
+[2026-08-06 17:45:52] [INFO] Getting changed files with: git diff --name-only main...suma_code_update
+[2026-08-06 17:45:52] [INFO] No committed diff found; checking working tree changes...
+[2026-08-06 17:45:52] [INFO] Found 2 changed files
+[2026-08-06 17:45:52] [INFO] Building Eclipse iceoryx with compile_commands.json...
+[2026-08-06 17:45:52] [INFO] Detected Bazel build system; building with Bazel...
+[2026-08-06 17:45:52] [INFO] Building with Bazel: bazel build --build_tag_filters= --test_tag_filters= //:iceoryx
+[2026-08-06 17:45:52] [WARNING] Bazel build failed: Command '['bazel', 'build', '--build_tag_filters=', '--test_tag_filters=', '//:iceoryx']' returned non-zero exit status 2.; trying CMake fallback
+[2026-08-06 17:45:52] [INFO] Detected CMake build system; building with CMake...
+[2026-08-06 17:45:52] [INFO] CMakeLists.txt found in iceoryx_meta/; using that as source
+[2026-08-06 17:45:52] [INFO] Configuring: cmake -B /home/sumalatha.s/SUMAGS/Workspace/iceoryx/build -DCMAKE_EXPORT_COMPILE_COMMANDS=ON -DCMAKE_BUILD_TYPE=Release /home/sumalatha.s/SUMAGS/Workspace/iceoryx/iceoryx_meta
+[2026-08-06 17:45:59] [INFO] Building: cmake --build /home/sumalatha.s/SUMAGS/Workspace/iceoryx/build -j 12
+[2026-08-06 17:46:00] [ERROR] Build failed: Command '['cmake', '--build', '/home/sumalatha.s/SUMAGS/Workspace/iceoryx/build', '-j', '12']' returned non-zero exit status 2.
+[2026-08-06 17:46:00] [ERROR] Error in review pipeline: Command '['cmake', '--build', '/home/sumalatha.s/SUMAGS/Workspace/iceoryx/build', '-j', '12']' returned non-zero exit status 2.
+
+Results saved to results.json

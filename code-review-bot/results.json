@@ -1,0 +1,810 @@
+{
+  "status": "success",
+  "sarif": {
+    "version": "2.1.0",
+    "$schema": "https://raw.githubusercontent.com/oasis-tcs/sarif-spec/master/Schemata/sarif-schema-2.1.0.json",
+    "runs": [
+      {
+        "tool": {
+          "driver": {
+            "name": "iceoryx-code-review-agent",
+            "version": "1.0.0",
+            "informationUri": "https://github.com/eclipse-iceoryx/iceoryx"
+          }
+        },
+        "results": [
+          {
+            "ruleId": "readability-implicit-bool-conversion",
+            "message": {
+              "text": "warning: implicit conversion 'int32_t' (aka 'int') -> 'bool' []"
+            },
+            "level": "major",
+            "locations": [
+              {
+                "physicalLocation": {
+                  "artifactLocation": {
+                    "uri": "/home/sumalatha.s/SUMAGS/Workspace/iceoryx/iceoryx_hoofs/primitives/source/type_traits.cpp"
+                  },
+                  "region": {
+                    "startLine": 42,
+                    "startColumn": 9
+                  }
+                }
+              }
+            ],
+            "properties": {
+              "confidence": "high",
+              "standard": "AUTOSAR",
+              "isNew": true,
+              "fingerprint": "/home/sumalatha.s/SUMAGS/Workspace/iceoryx/iceoryx_hoofs/primitives/source/type_traits.cpp:42:9:readability-implicit-bool-conversion"
+            }
+          },
+          {
+            "ruleId": "bugprone-assignment-in-if-condition",
+            "message": {
+              "text": "warning: an assignment within an 'if' condition is bug-prone []"
+            },
+            "level": "major",
+            "locations": [
+              {
+                "physicalLocation": {
+                  "artifactLocation": {
+                    "uri": "/home/sumalatha.s/SUMAGS/Workspace/iceoryx/iceoryx_hoofs/primitives/source/type_traits.cpp"
+                  },
+                  "region": {
+                    "startLine": 42,
+                    "startColumn": 14
+                  }
+                }
+              }
+            ],
+            "properties": {
+              "confidence": "high",
+              "standard": "AUTOSAR",
+              "isNew": true,
+              "fingerprint": "/home/sumalatha.s/SUMAGS/Workspace/iceoryx/iceoryx_hoofs/primitives/source/type_traits.cpp:42:14:bugprone-assignment-in-if-condition"
+            }
+          },
+          {
+            "ruleId": "clang-analyzer-deadcode.DeadStores",
+            "message": {
+              "text": "warning: Value stored to 'test' is never read []"
+            },
+            "level": "major",
+            "locations": [
+              {
+                "physicalLocation": {
+                  "artifactLocation": {
+                    "uri": "/home/sumalatha.s/SUMAGS/Workspace/iceoryx/iceoryx_hoofs/primitives/source/type_traits.cpp"
+                  },
+                  "region": {
+                    "startLine": 44,
+                    "startColumn": 9
+                  }
+                }
+              }
+            ],
+            "properties": {
+              "confidence": "high",
+              "standard": "AUTOSAR",
+              "isNew": true,
+              "fingerprint": "/home/sumalatha.s/SUMAGS/Workspace/iceoryx/iceoryx_hoofs/primitives/source/type_traits.cpp:44:9:clang-analyzer-deadcode.DeadStores"
+            }
+          },
+          {
+            "ruleId": "cppcoreguidelines-avoid-c-arrays,hicpp-avoid-c-arrays",
+            "message": {
+              "text": "warning: do not declare C-style arrays, use std::array<> instead []"
+            },
+            "level": "major",
+            "locations": [
+              {
+                "physicalLocation": {
+                  "artifactLocation": {
+                    "uri": "/home/sumalatha.s/SUMAGS/Workspace/iceoryx/iceoryx_hoofs/primitives/source/type_traits.cpp"
+                  },
+                  "region": {
+                    "startLine": 47,
+                    "startColumn": 5
+                  }
+                }
+              }
+            ],
+            "properties": {
+              "confidence": "high",
+              "standard": "AUTOSAR",
+              "isNew": true,
+              "fingerprint": "/home/sumalatha.s/SUMAGS/Workspace/iceoryx/iceoryx_hoofs/primitives/source/type_traits.cpp:47:5:cppcoreguidelines-avoid-c-arrays,hicpp-avoid-c-arrays"
+            }
+          },
+          {
+            "ruleId": "hicpp-use-auto",
+            "message": {
+              "text": "warning: use auto when initializing with a cast to avoid duplicating the type name []"
+            },
+            "level": "major",
+            "locations": [
+              {
+                "physicalLocation": {
+                  "artifactLocation": {
+                    "uri": "/home/sumalatha.s/SUMAGS/Workspace/iceoryx/iceoryx_hoofs/primitives/source/type_traits.cpp"
+                  },
+                  "region": {
+                    "startLine": 54,
+                    "startColumn": 5
+                  }
+                }
+              }
+            ],
+            "properties": {
+              "confidence": "high",
+              "standard": "AUTOSAR",
+              "isNew": true,
+              "fingerprint": "/home/sumalatha.s/SUMAGS/Workspace/iceoryx/iceoryx_hoofs/primitives/source/type_traits.cpp:54:5:hicpp-use-auto"
+            }
+          },
+          {
+            "ruleId": "cppcoreguidelines-pro-type-reinterpret-cast",
+            "message": {
+              "text": "warning: do not use reinterpret_cast []"
+            },
+            "level": "major",
+            "locations": [
+              {
+                "physicalLocation": {
+                  "artifactLocation": {
+                    "uri": "/home/sumalatha.s/SUMAGS/Workspace/iceoryx/iceoryx_hoofs/primitives/source/type_traits.cpp"
+                  },
+                  "region": {
+                    "startLine": 54,
+                    "startColumn": 23
+                  }
+                }
+              }
+            ],
+            "properties": {
+              "confidence": "high",
+              "standard": "AUTOSAR",
+              "isNew": true,
+              "fingerprint": "/home/sumalatha.s/SUMAGS/Workspace/iceoryx/iceoryx_hoofs/primitives/source/type_traits.cpp:54:23:cppcoreguidelines-pro-type-reinterpret-cast"
+            }
+          },
+          {
+            "ruleId": "cppcoreguidelines-avoid-magic-numbers,readability-magic-numbers",
+            "message": {
+              "text": "warning: 42 is a magic number; consider replacing it with a named constant []"
+            },
+            "level": "major",
+            "locations": [
+              {
+                "physicalLocation": {
+                  "artifactLocation": {
+                    "uri": "/home/sumalatha.s/SUMAGS/Workspace/iceoryx/iceoryx_hoofs/primitives/source/type_traits.cpp"
+                  },
+                  "region": {
+                    "startLine": 58,
+                    "startColumn": 24
+                  }
+                }
+              }
+            ],
+            "properties": {
+              "confidence": "high",
+              "standard": "AUTOSAR",
+              "isNew": true,
+              "fingerprint": "/home/sumalatha.s/SUMAGS/Workspace/iceoryx/iceoryx_hoofs/primitives/source/type_traits.cpp:58:24:cppcoreguidelines-avoid-magic-numbers,readability-magic-numbers"
+            }
+          },
+          {
+            "ruleId": "clang-analyzer-core.DivideZero",
+            "message": {
+              "text": "warning: Division by zero []"
+            },
+            "level": "major",
+            "locations": [
+              {
+                "physicalLocation": {
+                  "artifactLocation": {
+                    "uri": "/home/sumalatha.s/SUMAGS/Workspace/iceoryx/iceoryx_hoofs/primitives/source/type_traits.cpp"
+                  },
+                  "region": {
+                    "startLine": 58,
+                    "startColumn": 27
+                  }
+                }
+              }
+            ],
+            "properties": {
+              "confidence": "high",
+              "standard": "AUTOSAR",
+              "isNew": true,
+              "fingerprint": "/home/sumalatha.s/SUMAGS/Workspace/iceoryx/iceoryx_hoofs/primitives/source/type_traits.cpp:58:27:clang-analyzer-core.DivideZero"
+            }
+          },
+          {
+            "ruleId": "cppcoreguidelines-owning-memory",
+            "message": {
+              "text": "warning: initializing non-owner 'int *' with a newly created 'gsl::owner<>' []"
+            },
+            "level": "major",
+            "locations": [
+              {
+                "physicalLocation": {
+                  "artifactLocation": {
+                    "uri": "/home/sumalatha.s/SUMAGS/Workspace/iceoryx/iceoryx_hoofs/primitives/source/type_traits.cpp"
+                  },
+                  "region": {
+                    "startLine": 61,
+                    "startColumn": 5
+                  }
+                }
+              }
+            ],
+            "properties": {
+              "confidence": "high",
+              "standard": "AUTOSAR",
+              "isNew": true,
+              "fingerprint": "/home/sumalatha.s/SUMAGS/Workspace/iceoryx/iceoryx_hoofs/primitives/source/type_traits.cpp:61:5:cppcoreguidelines-owning-memory"
+            }
+          },
+          {
+            "ruleId": "bugprone-unhandled-exception-at-new",
+            "message": {
+              "text": "warning: missing exception handler for allocation failure at 'new' []"
+            },
+            "level": "major",
+            "locations": [
+              {
+                "physicalLocation": {
+                  "artifactLocation": {
+                    "uri": "/home/sumalatha.s/SUMAGS/Workspace/iceoryx/iceoryx_hoofs/primitives/source/type_traits.cpp"
+                  },
+                  "region": {
+                    "startLine": 61,
+                    "startColumn": 17
+                  }
+                }
+              }
+            ],
+            "properties": {
+              "confidence": "high",
+              "standard": "AUTOSAR",
+              "isNew": true,
+              "fingerprint": "/home/sumalatha.s/SUMAGS/Workspace/iceoryx/iceoryx_hoofs/primitives/source/type_traits.cpp:61:17:bugprone-unhandled-exception-at-new"
+            }
+          },
+          {
+            "ruleId": "cppcoreguidelines-init-variables",
+            "message": {
+              "text": "warning: variable 'result' is not initialized []"
+            },
+            "level": "major",
+            "locations": [
+              {
+                "physicalLocation": {
+                  "artifactLocation": {
+                    "uri": "/home/sumalatha.s/SUMAGS/Workspace/iceoryx/iceoryx_hoofs/time/source/duration.cpp"
+                  },
+                  "region": {
+                    "startLine": 92,
+                    "startColumn": 14
+                  }
+                }
+              }
+            ],
+            "properties": {
+              "confidence": "high",
+              "standard": "AUTOSAR",
+              "isNew": true,
+              "fingerprint": "/home/sumalatha.s/SUMAGS/Workspace/iceoryx/iceoryx_hoofs/time/source/duration.cpp:92:14:cppcoreguidelines-init-variables"
+            }
+          },
+          {
+            "ruleId": "cppcoreguidelines-avoid-magic-numbers,readability-magic-numbers",
+            "message": {
+              "text": "warning: 123U is a magic number; consider replacing it with a named constant []"
+            },
+            "level": "major",
+            "locations": [
+              {
+                "physicalLocation": {
+                  "artifactLocation": {
+                    "uri": "/home/sumalatha.s/SUMAGS/Workspace/iceoryx/iceoryx_hoofs/time/source/duration.cpp"
+                  },
+                  "region": {
+                    "startLine": 95,
+                    "startColumn": 18
+                  }
+                }
+              }
+            ],
+            "properties": {
+              "confidence": "high",
+              "standard": "AUTOSAR",
+              "isNew": true,
+              "fingerprint": "/home/sumalatha.s/SUMAGS/Workspace/iceoryx/iceoryx_hoofs/time/source/duration.cpp:95:18:cppcoreguidelines-avoid-magic-numbers,readability-magic-numbers"
+            }
+          },
+          {
+            "ruleId": "clang-analyzer-core.NullDereference",
+            "message": {
+              "text": "warning: Dereference of null pointer (loaded from variable 'nullPointer') []"
+            },
+            "level": "major",
+            "locations": [
+              {
+                "physicalLocation": {
+                  "artifactLocation": {
+                    "uri": "/home/sumalatha.s/SUMAGS/Workspace/iceoryx/iceoryx_hoofs/time/source/duration.cpp"
+                  },
+                  "region": {
+                    "startLine": 103,
+                    "startColumn": 22
+                  }
+                }
+              }
+            ],
+            "properties": {
+              "confidence": "high",
+              "standard": "AUTOSAR",
+              "isNew": true,
+              "fingerprint": "/home/sumalatha.s/SUMAGS/Workspace/iceoryx/iceoryx_hoofs/time/source/duration.cpp:103:22:clang-analyzer-core.NullDereference"
+            }
+          },
+          {
+            "ruleId": "cppcoreguidelines-avoid-magic-numbers,readability-magic-numbers",
+            "message": {
+              "text": "warning: 42 is a magic number; consider replacing it with a named constant []"
+            },
+            "level": "major",
+            "locations": [
+              {
+                "physicalLocation": {
+                  "artifactLocation": {
+                    "uri": "/home/sumalatha.s/SUMAGS/Workspace/iceoryx/iceoryx_hoofs/time/source/duration.cpp"
+                  },
+                  "region": {
+                    "startLine": 103,
+                    "startColumn": 24
+                  }
+                }
+              }
+            ],
+            "properties": {
+              "confidence": "high",
+              "standard": "AUTOSAR",
+              "isNew": true,
+              "fingerprint": "/home/sumalatha.s/SUMAGS/Workspace/iceoryx/iceoryx_hoofs/time/source/duration.cpp:103:24:cppcoreguidelines-avoid-magic-numbers,readability-magic-numbers"
+            }
+          },
+          {
+            "ruleId": "cppcoreguidelines-avoid-goto,hicpp-avoid-goto",
+            "message": {
+              "text": "warning: avoid using 'goto' for flow control []"
+            },
+            "level": "major",
+            "locations": [
+              {
+                "physicalLocation": {
+                  "artifactLocation": {
+                    "uri": "/home/sumalatha.s/SUMAGS/Workspace/iceoryx/iceoryx_hoofs/time/source/duration.cpp"
+                  },
+                  "region": {
+                    "startLine": 107,
+                    "startColumn": 5
+                  }
+                }
+              }
+            ],
+            "properties": {
+              "confidence": "high",
+              "standard": "AUTOSAR",
+              "isNew": true,
+              "fingerprint": "/home/sumalatha.s/SUMAGS/Workspace/iceoryx/iceoryx_hoofs/time/source/duration.cpp:107:5:cppcoreguidelines-avoid-goto,hicpp-avoid-goto"
+            }
+          },
+          {
+            "ruleId": "cppcoreguidelines-owning-memory",
+            "message": {
+              "text": "warning: initializing non-owner 'int32_t *' (aka 'int *') with a newly created 'gsl::owner<>' []"
+            },
+            "level": "major",
+            "locations": [
+              {
+                "physicalLocation": {
+                  "artifactLocation": {
+                    "uri": "/home/sumalatha.s/SUMAGS/Workspace/iceoryx/iceoryx_hoofs/time/source/duration.cpp"
+                  },
+                  "region": {
+                    "startLine": 114,
+                    "startColumn": 5
+                  }
+                }
+              }
+            ],
+            "properties": {
+              "confidence": "high",
+              "standard": "AUTOSAR",
+              "isNew": true,
+              "fingerprint": "/home/sumalatha.s/SUMAGS/Workspace/iceoryx/iceoryx_hoofs/time/source/duration.cpp:114:5:cppcoreguidelines-owning-memory"
+            }
+          },
+          {
+            "ruleId": "hicpp-use-auto",
+            "message": {
+              "text": "warning: use auto when initializing with new to avoid duplicating the type name []"
+            },
+            "level": "major",
+            "locations": [
+              {
+                "physicalLocation": {
+                  "artifactLocation": {
+                    "uri": "/home/sumalatha.s/SUMAGS/Workspace/iceoryx/iceoryx_hoofs/time/source/duration.cpp"
+                  },
+                  "region": {
+                    "startLine": 114,
+                    "startColumn": 5
+                  }
+                }
+              }
+            ],
+            "properties": {
+              "confidence": "high",
+              "standard": "AUTOSAR",
+              "isNew": true,
+              "fingerprint": "/home/sumalatha.s/SUMAGS/Workspace/iceoryx/iceoryx_hoofs/time/source/duration.cpp:114:5:hicpp-use-auto"
+            }
+          },
+          {
+            "ruleId": "bugprone-unhandled-exception-at-new",
+            "message": {
+              "text": "warning: missing exception handler for allocation failure at 'new' []"
+            },
+            "level": "major",
+            "locations": [
+              {
+                "physicalLocation": {
+                  "artifactLocation": {
+                    "uri": "/home/sumalatha.s/SUMAGS/Workspace/iceoryx/iceoryx_hoofs/time/source/duration.cpp"
+                  },
+                  "region": {
+                    "startLine": 114,
+                    "startColumn": 28
+                  }
+                }
+              }
+            ],
+            "properties": {
+              "confidence": "high",
+              "standard": "AUTOSAR",
+              "isNew": true,
+              "fingerprint": "/home/sumalatha.s/SUMAGS/Workspace/iceoryx/iceoryx_hoofs/time/source/duration.cpp:114:28:bugprone-unhandled-exception-at-new"
+            }
+          },
+          {
+            "ruleId": "cppcoreguidelines-pro-bounds-pointer-arithmetic",
+            "message": {
+              "text": "warning: do not use pointer arithmetic []"
+            },
+            "level": "major",
+            "locations": [
+              {
+                "physicalLocation": {
+                  "artifactLocation": {
+                    "uri": "/home/sumalatha.s/SUMAGS/Workspace/iceoryx/iceoryx_hoofs/time/source/duration.cpp"
+                  },
+                  "region": {
+                    "startLine": 115,
+                    "startColumn": 5
+                  }
+                }
+              }
+            ],
+            "properties": {
+              "confidence": "high",
+              "standard": "AUTOSAR",
+              "isNew": true,
+              "fingerprint": "/home/sumalatha.s/SUMAGS/Workspace/iceoryx/iceoryx_hoofs/time/source/duration.cpp:115:5:cppcoreguidelines-pro-bounds-pointer-arithmetic"
+            }
+          },
+          {
+            "ruleId": "clang-analyzer-cplusplus.NewDeleteLeaks",
+            "message": {
+              "text": "warning: Potential leak of memory pointed to by 'heapPointer' []"
+            },
+            "level": "major",
+            "locations": [
+              {
+                "physicalLocation": {
+                  "artifactLocation": {
+                    "uri": "/home/sumalatha.s/SUMAGS/Workspace/iceoryx/iceoryx_hoofs/time/source/duration.cpp"
+                  },
+                  "region": {
+                    "startLine": 117,
+                    "startColumn": 1
+                  }
+                }
+              }
+            ],
+            "properties": {
+              "confidence": "high",
+              "standard": "AUTOSAR",
+              "isNew": true,
+              "fingerprint": "/home/sumalatha.s/SUMAGS/Workspace/iceoryx/iceoryx_hoofs/time/source/duration.cpp:117:1:clang-analyzer-cplusplus.NewDeleteLeaks"
+            }
+          }
+        ]
+      }
+    ]
+  },
+  "summary": {
+    "total_findings": 20,
+    "by_severity": {
+      "major": 20
+    },
+    "changed_files": 2,
+    "timestamp": "2026-08-06T19:13:30.597794"
+  },
+  "findings": [
+    {
+      "rule_id": "readability-implicit-bool-conversion",
+      "tool": "clang-tidy",
+      "severity": "major",
+      "confidence": "high",
+      "file": "/home/sumalatha.s/SUMAGS/Workspace/iceoryx/iceoryx_hoofs/primitives/source/type_traits.cpp",
+      "line": 42,
+      "column": 9,
+      "message": "warning: implicit conversion 'int32_t' (aka 'int') -> 'bool' []",
+      "standard": "AUTOSAR",
+      "is_new": true,
+      "fingerprint": "/home/sumalatha.s/SUMAGS/Workspace/iceoryx/iceoryx_hoofs/primitives/source/type_traits.cpp:42:9:readability-implicit-bool-conversion"
+    },
+    {
+      "rule_id": "bugprone-assignment-in-if-condition",
+      "tool": "clang-tidy",
+      "severity": "major",
+      "confidence": "high",
+      "file": "/home/sumalatha.s/SUMAGS/Workspace/iceoryx/iceoryx_hoofs/primitives/source/type_traits.cpp",
+      "line": 42,
+      "column": 14,
+      "message": "warning: an assignment within an 'if' condition is bug-prone []",
+      "standard": "AUTOSAR",
+      "is_new": true,
+      "fingerprint": "/home/sumalatha.s/SUMAGS/Workspace/iceoryx/iceoryx_hoofs/primitives/source/type_traits.cpp:42:14:bugprone-assignment-in-if-condition"
+    },
+    {
+      "rule_id": "clang-analyzer-deadcode.DeadStores",
+      "tool": "clang-tidy",
+      "severity": "major",
+      "confidence": "high",
+      "file": "/home/sumalatha.s/SUMAGS/Workspace/iceoryx/iceoryx_hoofs/primitives/source/type_traits.cpp",
+      "line": 44,
+      "column": 9,
+      "message": "warning: Value stored to 'test' is never read []",
+      "standard": "AUTOSAR",
+      "is_new": true,
+      "fingerprint": "/home/sumalatha.s/SUMAGS/Workspace/iceoryx/iceoryx_hoofs/primitives/source/type_traits.cpp:44:9:clang-analyzer-deadcode.DeadStores"
+    },
+    {
+      "rule_id": "cppcoreguidelines-avoid-c-arrays,hicpp-avoid-c-arrays",
+      "tool": "clang-tidy",
+      "severity": "major",
+      "confidence": "high",
+      "file": "/home/sumalatha.s/SUMAGS/Workspace/iceoryx/iceoryx_hoofs/primitives/source/type_traits.cpp",
+      "line": 47,
+      "column": 5,
+      "message": "warning: do not declare C-style arrays, use std::array<> instead []",
+      "standard": "AUTOSAR",
+      "is_new": true,
+      "fingerprint": "/home/sumalatha.s/SUMAGS/Workspace/iceoryx/iceoryx_hoofs/primitives/source/type_traits.cpp:47:5:cppcoreguidelines-avoid-c-arrays,hicpp-avoid-c-arrays"
+    },
+    {
+      "rule_id": "hicpp-use-auto",
+      "tool": "clang-tidy",
+      "severity": "major",
+      "confidence": "high",
+      "file": "/home/sumalatha.s/SUMAGS/Workspace/iceoryx/iceoryx_hoofs/primitives/source/type_traits.cpp",
+      "line": 54,
+      "column": 5,
+      "message": "warning: use auto when initializing with a cast to avoid duplicating the type name []",
+      "standard": "AUTOSAR",
+      "is_new": true,
+      "fingerprint": "/home/sumalatha.s/SUMAGS/Workspace/iceoryx/iceoryx_hoofs/primitives/source/type_traits.cpp:54:5:hicpp-use-auto"
+    },
+    {
+      "rule_id": "cppcoreguidelines-pro-type-reinterpret-cast",
+      "tool": "clang-tidy",
+      "severity": "major",
+      "confidence": "high",
+      "file": "/home/sumalatha.s/SUMAGS/Workspace/iceoryx/iceoryx_hoofs/primitives/source/type_traits.cpp",
+      "line": 54,
+      "column": 23,
+      "message": "warning: do not use reinterpret_cast []",
+      "standard": "AUTOSAR",
+      "is_new": true,
+      "fingerprint": "/home/sumalatha.s/SUMAGS/Workspace/iceoryx/iceoryx_hoofs/primitives/source/type_traits.cpp:54:23:cppcoreguidelines-pro-type-reinterpret-cast"
+    },
+    {
+      "rule_id": "cppcoreguidelines-avoid-magic-numbers,readability-magic-numbers",
+      "tool": "clang-tidy",
+      "severity": "major",
+      "confidence": "high",
+      "file": "/home/sumalatha.s/SUMAGS/Workspace/iceoryx/iceoryx_hoofs/primitives/source/type_traits.cpp",
+      "line": 58,
+      "column": 24,
+      "message": "warning: 42 is a magic number; consider replacing it with a named constant []",
+      "standard": "AUTOSAR",
+      "is_new": true,
+      "fingerprint": "/home/sumalatha.s/SUMAGS/Workspace/iceoryx/iceoryx_hoofs/primitives/source/type_traits.cpp:58:24:cppcoreguidelines-avoid-magic-numbers,readability-magic-numbers"
+    },
+    {
+      "rule_id": "clang-analyzer-core.DivideZero",
+      "tool": "clang-tidy",
+      "severity": "major",
+      "confidence": "high",
+      "file": "/home/sumalatha.s/SUMAGS/Workspace/iceoryx/iceoryx_hoofs/primitives/source/type_traits.cpp",
+      "line": 58,
+      "column": 27,
+      "message": "warning: Division by zero []",
+      "standard": "AUTOSAR",
+      "is_new": true,
+      "fingerprint": "/home/sumalatha.s/SUMAGS/Workspace/iceoryx/iceoryx_hoofs/primitives/source/type_traits.cpp:58:27:clang-analyzer-core.DivideZero"
+    },
+    {
+      "rule_id": "cppcoreguidelines-owning-memory",
+      "tool": "clang-tidy",
+      "severity": "major",
+      "confidence": "high",
+      "file": "/home/sumalatha.s/SUMAGS/Workspace/iceoryx/iceoryx_hoofs/primitives/source/type_traits.cpp",
+      "line": 61,
+      "column": 5,
+      "message": "warning: initializing non-owner 'int *' with a newly created 'gsl::owner<>' []",
+      "standard": "AUTOSAR",
+      "is_new": true,
+      "fingerprint": "/home/sumalatha.s/SUMAGS/Workspace/iceoryx/iceoryx_hoofs/primitives/source/type_traits.cpp:61:5:cppcoreguidelines-owning-memory"
+    },
+    {
+      "rule_id": "bugprone-unhandled-exception-at-new",
+      "tool": "clang-tidy",
+      "severity": "major",
+      "confidence": "high",
+      "file": "/home/sumalatha.s/SUMAGS/Workspace/iceoryx/iceoryx_hoofs/primitives/source/type_traits.cpp",
+      "line": 61,
+      "column": 17,
+      "message": "warning: missing exception handler for allocation failure at 'new' []",
+      "standard": "AUTOSAR",
+      "is_new": true,
+      "fingerprint": "/home/sumalatha.s/SUMAGS/Workspace/iceoryx/iceoryx_hoofs/primitives/source/type_traits.cpp:61:17:bugprone-unhandled-exception-at-new"
+    },
+    {
+      "rule_id": "cppcoreguidelines-init-variables",
+      "tool": "clang-tidy",
+      "severity": "major",
+      "confidence": "high",
+      "file": "/home/sumalatha.s/SUMAGS/Workspace/iceoryx/iceoryx_hoofs/time/source/duration.cpp",
+      "line": 92,
+      "column": 14,
+      "message": "warning: variable 'result' is not initialized []",
+      "standard": "AUTOSAR",
+      "is_new": true,
+      "fingerprint": "/home/sumalatha.s/SUMAGS/Workspace/iceoryx/iceoryx_hoofs/time/source/duration.cpp:92:14:cppcoreguidelines-init-variables"
+    },
+    {
+      "rule_id": "cppcoreguidelines-avoid-magic-numbers,readability-magic-numbers",
+      "tool": "clang-tidy",
+      "severity": "major",
+      "confidence": "high",
+      "file": "/home/sumalatha.s/SUMAGS/Workspace/iceoryx/iceoryx_hoofs/time/source/duration.cpp",
+      "line": 95,
+      "column": 18,
+      "message": "warning: 123U is a magic number; consider replacing it with a named constant []",
+      "standard": "AUTOSAR",
+      "is_new": true,
+      "fingerprint": "/home/sumalatha.s/SUMAGS/Workspace/iceoryx/iceoryx_hoofs/time/source/duration.cpp:95:18:cppcoreguidelines-avoid-magic-numbers,readability-magic-numbers"
+    },
+    {
+      "rule_id": "clang-analyzer-core.NullDereference",
+      "tool": "clang-tidy",
+      "severity": "major",
+      "confidence": "high",
+      "file": "/home/sumalatha.s/SUMAGS/Workspace/iceoryx/iceoryx_hoofs/time/source/duration.cpp",
+      "line": 103,
+      "column": 22,
+      "message": "warning: Dereference of null pointer (loaded from variable 'nullPointer') []",
+      "standard": "AUTOSAR",
+      "is_new": true,
+      "fingerprint": "/home/sumalatha.s/SUMAGS/Workspace/iceoryx/iceoryx_hoofs/time/source/duration.cpp:103:22:clang-analyzer-core.NullDereference"
+    },
+    {
+      "rule_id": "cppcoreguidelines-avoid-magic-numbers,readability-magic-numbers",
+      "tool": "clang-tidy",
+      "severity": "major",
+      "confidence": "high",
+      "file": "/home/sumalatha.s/SUMAGS/Workspace/iceoryx/iceoryx_hoofs/time/source/duration.cpp",
+      "line": 103,
+      "column": 24,
+      "message": "warning: 42 is a magic number; consider replacing it with a named constant []",
+      "standard": "AUTOSAR",
+      "is_new": true,
+      "fingerprint": "/home/sumalatha.s/SUMAGS/Workspace/iceoryx/iceoryx_hoofs/time/source/duration.cpp:103:24:cppcoreguidelines-avoid-magic-numbers,readability-magic-numbers"
+    },
+    {
+      "rule_id": "cppcoreguidelines-avoid-goto,hicpp-avoid-goto",
+      "tool": "clang-tidy",
+      "severity": "major",
+      "confidence": "high",
+      "file": "/home/sumalatha.s/SUMAGS/Workspace/iceoryx/iceoryx_hoofs/time/source/duration.cpp",
+      "line": 107,
+      "column": 5,
+      "message": "warning: avoid using 'goto' for flow control []",
+      "standard": "AUTOSAR",
+      "is_new": true,
+      "fingerprint": "/home/sumalatha.s/SUMAGS/Workspace/iceoryx/iceoryx_hoofs/time/source/duration.cpp:107:5:cppcoreguidelines-avoid-goto,hicpp-avoid-goto"
+    },
+    {
+      "rule_id": "cppcoreguidelines-owning-memory",
+      "tool": "clang-tidy",
+      "severity": "major",
+      "confidence": "high",
+      "file": "/home/sumalatha.s/SUMAGS/Workspace/iceoryx/iceoryx_hoofs/time/source/duration.cpp",
+      "line": 114,
+      "column": 5,
+      "message": "warning: initializing non-owner 'int32_t *' (aka 'int *') with a newly created 'gsl::owner<>' []",
+      "standard": "AUTOSAR",
+      "is_new": true,
+      "fingerprint": "/home/sumalatha.s/SUMAGS/Workspace/iceoryx/iceoryx_hoofs/time/source/duration.cpp:114:5:cppcoreguidelines-owning-memory"
+    },
+    {
+      "rule_id": "hicpp-use-auto",
+      "tool": "clang-tidy",
+      "severity": "major",
+      "confidence": "high",
+      "file": "/home/sumalatha.s/SUMAGS/Workspace/iceoryx/iceoryx_hoofs/time/source/duration.cpp",
+      "line": 114,
+      "column": 5,
+      "message": "warning: use auto when initializing with new to avoid duplicating the type name []",
+      "standard": "AUTOSAR",
+      "is_new": true,
+      "fingerprint": "/home/sumalatha.s/SUMAGS/Workspace/iceoryx/iceoryx_hoofs/time/source/duration.cpp:114:5:hicpp-use-auto"
+    },
+    {
+      "rule_id": "bugprone-unhandled-exception-at-new",
+      "tool": "clang-tidy",
+      "severity": "major",
+      "confidence": "high",
+      "file": "/home/sumalatha.s/SUMAGS/Workspace/iceoryx/iceoryx_hoofs/time/source/duration.cpp",
+      "line": 114,
+      "column": 28,
+      "message": "warning: missing exception handler for allocation failure at 'new' []",
+      "standard": "AUTOSAR",
+      "is_new": true,
+      "fingerprint": "/home/sumalatha.s/SUMAGS/Workspace/iceoryx/iceoryx_hoofs/time/source/duration.cpp:114:28:bugprone-unhandled-exception-at-new"
+    },
+    {
+      "rule_id": "cppcoreguidelines-pro-bounds-pointer-arithmetic",
+      "tool": "clang-tidy",
+      "severity": "major",
+      "confidence": "high",
+      "file": "/home/sumalatha.s/SUMAGS/Workspace/iceoryx/iceoryx_hoofs/time/source/duration.cpp",
+      "line": 115,
+      "column": 5,
+      "message": "warning: do not use pointer arithmetic []",
+      "standard": "AUTOSAR",
+      "is_new": true,
+      "fingerprint": "/home/sumalatha.s/SUMAGS/Workspace/iceoryx/iceoryx_hoofs/time/source/duration.cpp:115:5:cppcoreguidelines-pro-bounds-pointer-arithmetic"
+    },
+    {
+      "rule_id": "clang-analyzer-cplusplus.NewDeleteLeaks",
+      "tool": "clang-tidy",
+      "severity": "major",
+      "confidence": "high",
+      "file": "/home/sumalatha.s/SUMAGS/Workspace/iceoryx/iceoryx_hoofs/time/source/duration.cpp",
+      "line": 117,
+      "column": 1,
+      "message": "warning: Potential leak of memory pointed to by 'heapPointer' []",
+      "standard": "AUTOSAR",
+      "is_new": true,
+      "fingerprint": "/home/sumalatha.s/SUMAGS/Workspace/iceoryx/iceoryx_hoofs/time/source/duration.cpp:117:1:clang-analyzer-cplusplus.NewDeleteLeaks"
+    }
+  ]
+}

@@ -1,0 +1,57 @@
+Eclipse iceoryx is open source and its primary license is the Apache License, Version 2.0 (Apache-2.0).
+
+GitHub repository: https://github.com/eclipse-iceoryx/iceoryx
+Eclipse project page: https://projects.eclipse.org/projects/technology.iceoryx
+License text: https://www.apache.org/licenses/LICENSE-2.0
+
+Mapping MVP Steps to iceoryx Repository Capabilities
+Step	Capability	Status	Notes
+1. Define review contract	Policy/format	✅ Ready	CONTRIBUTING.md and QUALITY_DECLARATION.md define project standards; SARIF export is supported
+2. Select rule coverage	MISRA/AUTOSAR mapping	✅ Ready	.clang-tidy already configured; Axivion suite labels findings with AUTOSAR/CERT; can add approved mappings
+3. Deterministic pipeline	Build → compile_commands.json → analyzers	✅ Full support	CMake with CMAKE_EXPORT_COMPILE_COMMANDS ON; multi-platform; all analyzers integrated
+4. Reproducible build	Containerized build	✅ Ready	Docker files exist in tools/docker/; clang v18 pinned; CMake and dependencies well-documented
+5. Compiler warnings	-Wall -Wextra -Wconversion etc.	✅ Existing	Platform-specific configs in cmake/compiler/<platform>/ show comprehensive flags; BUILD_STRICT option available
+6. clang-tidy & analyzer	Configuration + curated checks	✅ Existing	.clang-tidy file present; v18 pinned; CI already enforces it; can add custom AST checks
+7. Coverity integration	External finding import	⚠️ Partial	Axivion Suite used instead of Coverity; can normalize Axivion output to SARIF or add Coverity adapter
+8. Unified finding format	SARIF or proprietary format	✅ Ready	.clang-tidy and compiler output can emit JSON/SARIF; Axivion integrates with GitHub labels
+9. AI review layer	LLM + bounded questions	✅ Can add	No AI currently; agent can be inserted here to explain findings, suggest fixes, handle deviations
+10. Project-specific policy	Coding rules, suppressions	✅ Existing	Documented in CONTRIBUTING.md; git hooks enforce style; issue-based deviation workflow in place
+11. GitHub PR integration	Actions + inline comments	✅ Ready	CI/CD already posts results; can extend with AI-enriched bot; GitHub API well-documented
+12. Evaluation metrics	Precision, recall, false-positive rate	⚠️ Add	No formal metrics yet; code is clean (quality level 2), but MVP can establish baseline and measure
+What's Already in Place
+✅ Build & compilation: CMake, compile_commands.json, multi-platform support
+✅ Compiler warnings: Strict flags, -Werror for new code, platform-specific tuning
+✅ Static analysis: clang-tidy (v18), clang-format, sanitizers (ASan, TSan, UBSan, LSan)
+✅ Code quality baseline: QUALITY_DECLARATION.md (ROS 2 level 2), CONTRIBUTING.md
+✅ CI/CD: GitHub Actions with test, format, and clang-tidy jobs
+✅ Platform coverage: Linux, macOS, Windows, QNX, FreeBSD
+✅ Quality tooling integration: Axivion Suite (already running), codecov
+
+What Needs to be Added for the MVP
+Normalization layer – Convert clang-tidy, compiler, and Axivion results to a unified SARIF format
+Baseline management – Track existing issues and exclude them from PR comments; only flag new findings
+MISRA/AUTOSAR mapping – Create approved rule ID index (e.g., AUTOSAR-05-0-10 → clang-tidy:cert-dcl21-cpp)
+AI enrichment – Insert LLM to explain findings, suggest fixes, and flag architectural concerns
+GitHub App/Action – Extend existing CI to post inline comments with evidence and recommendations
+Metrics collection – Track precision, recall, and developer feedback over time
+Recommended MVP Approach for iceoryx
+Start with Phase 1–3 (deterministic analysis):
+
+Use existing .clang-tidy configuration
+Compile with project flags + strict warnings
+Capture new findings only (diff against main branch)
+Post a GitHub check with counts and SARIF
+Then add Phase 4–6 (standards mapping + AI):
+
+Map clang-tidy checks to approved project and AUTOSAR rules
+Run LLM on findings to explain risk and suggest safe fixes
+Add inline PR comments with evidence and context
+Finally Phase 7 (enforcement & metrics):
+
+Set merge-gate policies: fail on critical new findings
+Measure precision and false-positive rates
+Refine rules based on developer feedback
+Bottom Line
+✅ YES—proceed with iceoryx MVP. The repository is production-ready, well-tooled, has clear quality standards, and existing CI infrastructure. You can have a working code review bot posting findings to PRs within 2–3 weeks, then iterate on AI enrichment and AUTOSAR mapping.
+
+Claude Haiku 4.5 • 1x

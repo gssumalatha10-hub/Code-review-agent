@@ -1,0 +1,153 @@
+name: Code Review Agent
+
+on:
+  pull_request:
+    types: [opened, synchronize, reopened]
+  workflow_dispatch:
+
+permissions:
+  contents: read
+  pull-requests: write
+  checks: write
+  statuses: write
+
+jobs:
+  code-review:
+    name: C++ Code Review
+    runs-on: ubuntu-latest
+    
+    container:
+      image: ubuntu:22.04
+    
+    steps:
+      - name: Checkout target repository (iceoryx)
+        uses: actions/checkout@v4
+        with:
+          repository: eclipse-iceoryx/iceoryx
+          ref: main
+          fetch-depth: 0
+          path: iceoryx
+      
+      - name: Checkout review agent code
+        uses: actions/checkout@v4
+        with:
+          path: review-bot
+      
+      - name: Setup build environment
+        run: |
+          apt-get update
+          apt-get install -y \
+            build-essential \
+            cmake \
+            git \
+            clang-18 \
+            clang-tools-18 \
+            clang-tidy-18 \
+            python3 \
+            python3-pip \
+            python3-yaml
+          
+          # Link clang-18 tools to standard names
+          ln -sf /usr/bin/clang-18 /usr/bin/clang
+          ln -sf /usr/bin/clang++-18 /usr/bin/clang++
+          ln -sf /usr/bin/clang-tidy-18 /usr/bin/clang-tidy
+      
+      - name: Install Python dependencies
+        run: |
+          pip3 install PyGithub pyyaml
+      
+      - name: Get PR details
+        if: github.event_name == 'pull_request'
+        run: |
+          echo "PR_NUMBER=${{ github.event.pull_request.number }}" >> $GITHUB_ENV
+          echo "PR_HEAD=${{ github.event.pull_request.head.ref }}" >> $GITHUB_ENV
+          echo "PR_BASE=${{ github.event.pull_request.base.ref }}" >> $GITHUB_ENV
+      
+      - name: Run code review analysis
+        env:
+          GITHUB_PR_NUMBER: ${{ env.PR_NUMBER }}
+          GITHUB_REPOSITORY: ${{ github.repository }}
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          GITHUB_RUN_ID: ${{ github.run_id }}
+        run: |
+          cd iceoryx
+          
+          # Run the review orchestrator
+          python3 ../review-bot/src/review_orchestrator.py \
+            --repo . \
+            --config ../review-bot/review-config.yaml \
+            --pr-base ${{ env.PR_BASE }} \
+            --pr-head ${{ env.PR_HEAD }} \
+            --output review-results.json
+      
+      - name: Post review results to GitHub PR
+        if: github.event_name == 'pull_request' && always()
+        env:
+          GITHUB_REPOSITORY: ${{ github.repository }}
+          GITHUB_PR_NUMBER: ${{ env.PR_NUMBER }}
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          GITHUB_RUN_ID: ${{ github.run_id }}
+          GITHUB_ACTIONS: "true"
+        run: |
+          cd iceoryx
+          
+          python3 ../review-bot/src/github_reporter.py \
+            --results review-results.json \
+            --post-check \
+            --post-comments \
+            --generate-report \
+            --output review-report.md
+      
+      - name: Upload review report
+        if: always()
+        uses: actions/upload-artifact@v3
+        with:
+          name: code-review-report
+          path: iceoryx/review-report.md
+      
+      - name: Upload SARIF results
+        if: always()
+        uses: github/codeql-action/upload-sarif@v2
+        with:
+          sarif_file: iceoryx/.review-results/review-results.sarif
+          category: code-review
+      
+      - name: Comment PR with results summary
+        if: github.event_name == 'pull_request'
+        uses: actions/github-script@v7
+        with:
+          script: |
+            const fs = require('fs');
+            const results = JSON.parse(fs.readFileSync('iceoryx/review-results.json', 'utf8'));
+            
+            if (results.status === 'success') {
+              const summary = results.summary;
+              const findings = results.findings || [];
+              
+              const criticalCount = findings.filter(f => f.severity === 'critical').length;
+              const majorCount = findings.filter(f => f.severity === 'major').length;
+              const minorCount = findings.filter(f => f.severity === 'minor').length;
+              
+              let icon = '✅';
+              if (criticalCount > 0) icon = '❌';
+              else if (majorCount > 0) icon = '⚠️';
+              
+              const body = `${icon} **Code Review Results**
+              
+              | Metric | Count |
+              |--------|-------|
+              | Critical | ${criticalCount} |
+              | Major | ${majorCount} |
+              | Minor | ${minorCount} |
+              | Files Reviewed | ${summary.changed_files} |
+              
+              Check the artifacts and inline comments for details.
+              `;
+              
+              github.rest.issues.createComment({
+                issue_number: context.issue.number,
+                owner: context.repo.owner,
+                repo: context.repo.repo,
+                body: body
+              });
+            }

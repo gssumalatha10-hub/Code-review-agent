@@ -1,0 +1,48 @@
+Idea Summary
+AutoReview AI is an AI-powered code review agent for safety-critical automotive C++ development. Unlike traditional static analysis tools, it understands project context, coding standards, and feature intent to perform intelligent pull request reviews. By combining deterministic analysis with LLM reasoning and Retrieval-Augmented Generation (RAG), it explains issues, prioritizes risks, recommends fixes, and generates audit-ready compliance reports directly within GitHub.
+
+
+Problem you are solving
+Code reviews in automotive software are slow, repetitive, and heavily dependent on experienced reviewers. While static analysis tools detect coding issues, they lack project context and produce many warnings without explaining their real impact. Developers spend significant time interpreting findings, identifying false positives, ensuring compliance with standards like MISRA/AUTOSAR, and documenting review decisions, leading to longer development cycles and inconsistent review quality.
+
+
+Proposed Solution
+We propose an AI Code Review Agent that automatically reviews every GitHub Pull Request. The agent performs deterministic analysis using Clang-based tools, retrieves project-specific documentation, coding guidelines, and historical code patterns through RAG, and reasons over the entire feature instead of isolated files. It explains violations, maps them to automotive standards, groups related issues by root cause, prioritizes risks, suggests minimal code fixes, and publishes actionable feedback as inline PR comments and audit-ready compliance reports. Human reviewers remain in control while the AI performs the first comprehensive review.
+
+
+Impact you believe it will create
+The solution significantly reduces manual review effort, accelerates pull request approvals, and improves software quality by identifying defects early in the development lifecycle. It delivers explainable AI recommendations, strengthens compliance with automotive coding standards, improves knowledge sharing across teams, and enables developers to focus on architecture and business logic instead of repetitive review tasks. The approach is scalable across large automotive middleware projects and helps organizations build safer, more reliable software.
+
+
+Tech Stack
+
+Language: Python 3
+
+Static Analysis: Clang-Tidy, Clang Static Analyzer (scan-build), Compiler Diagnostics
+
+Build: CMake / Bazel (compile_commands.json)
+
+AI: OpenAI GPT-5.5 / Ollama (Llama)
+
+RAG: Sentence Transformers, FAISS
+
+Orchestration: LangChain
+
+Integration: GitHub Actions, PyGithub API
+
+Reporting: SARIF, JSON, HTML/Excel
+
+
+AIDLC Tooling that you plan to use
+
+LLM: OpenAI GPT-5.5 with Ollama/Llama fallback
+
+AI Orchestration: LangChain
+
+RAG Pipeline: Sentence Transformers + FAISS
+
+Prompt Engineering: Structured prompt templates for standards-aware reviews
+
+Agent Workflow: Multi-step reasoning with project context retrieval
+
+Safety & Governance: Prompt logging, confidence scoring, explainable outputs, and human-in-the-loop approval

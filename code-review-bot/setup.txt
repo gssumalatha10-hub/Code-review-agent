@@ -1,0 +1,26 @@
+sudo apt update
+sudo apt install git
+#clone https repo
+git clone https://github.com/eclipse-iceoryx/iceoryx.git /iceoryx
+#verify repo path
+ls /home/sumalatha.s/SUMAGS/Workspace/iceoryx-main/.git
+cd /iceoryx
+git checkout -b your_branch
+introduce violations in new files / old files
+
+sudo apt update
+sudo apt install cmake
+  sudo apt install bazel-bootstrap
+  sudo apt install clang clang-tidy clang-tools
+  sudo apt install python3-openpyxl
+cd /code-review-agent/code-review-bot
+
+//run the orchestrator
+python3 src/review_orchestrator.py \
+  --repo /home/sumalatha.s/SUMAGS/Workspace/iceoryx \
+  --config review-config.yaml \
+  --pr-base main \
+  --pr-head your_branch \
+  --output results.json \
+  --xlsx-output review-report.xlsx
+
