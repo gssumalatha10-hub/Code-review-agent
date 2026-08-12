@@ -211,7 +211,7 @@ class CodeReviewOrchestrator:
                 "bazel", "build",
                 "--build_tag_filters=",
                 "--test_tag_filters=",
-                "//:iceoryx"
+                "//:iceoryx2"
             ]
             
             self.log(f"Building with Bazel: {' '.join(bazel_cmd)}")
