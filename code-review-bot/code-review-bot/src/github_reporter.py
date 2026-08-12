@@ -7,7 +7,6 @@ Posts findings as PR comments and checks
 import json
 import os
 import sys
-import base64
 from pathlib import Path
 from typing import List, Dict, Any, Optional
 from dataclasses import dataclass
@@ -247,74 +246,6 @@ Only high-severity issues are shown inline. See run details for complete results
         except GithubException as e:
             print(f"ERROR posting PR comment: {e}")
     
-    def upload_sarif(self, sarif_file: str):
-        """Upload SARIF to GitHub Code Scanning API"""
-        if requests is None:
-            print("ERROR: 'requests' is required to upload SARIF. Install with: pip install requests")
-            return
-
-        if not self.repo:
-            print("No repository context; skipping SARIF upload")
-            return
-
-        if not Path(sarif_file).exists():
-            print(f"SARIF file not found: {sarif_file}")
-            return
-
-        owner_repo = self.repo_name
-        api_url = f"https://api.github.com/repos/{owner_repo}/code-scanning/sarifs"
-
-        # Read SARIF file as text
-        with open(sarif_file, 'r') as f:
-            sarif_content = f.read()
-
-        # Base64 encode the SARIF content (GitHub API requirement - plain text encoding only, no gzip)
-        encoded_sarif = base64.b64encode(sarif_content.encode('utf-8')).decode('utf-8')
-
-        # Get commit SHA and ref
-        commit_sha = self.pull.head.sha if self.pull else os.getenv("GITHUB_SHA", "")
-        ref = os.getenv("GITHUB_REF", f"refs/heads/{self.pull.head.ref}" if self.pull else "")
-
-        if not commit_sha or not ref:
-            print("ERROR: Missing commit_sha or ref for SARIF upload")
-            return
-
-        payload = {
-            "commit_sha": commit_sha,
-            "ref": ref,
-            "sarif": encoded_sarif,
-            "tool_name": "iceoryx-code-review-agent"
-        }
-
-        headers = {
-            "Authorization": f"Bearer {self.github_token}",
-            "Accept": "application/vnd.github+json",
-            "Content-Type": "application/json"
-        }
-
-        print(f"Uploading SARIF to GitHub Code Scanning API...")
-        print(f"  Endpoint: {api_url}")
-        print(f"  Commit SHA: {commit_sha}")
-        print(f"  Ref: {ref}")
-        print(f"  SARIF size: {len(encoded_sarif)} bytes (encoded)")
-
-        try:
-            resp = requests.post(api_url, json=payload, headers=headers, timeout=30)
-            
-            if resp.status_code in (200, 201, 202):
-                print("✓ SARIF uploaded successfully to GitHub Code Scanning")
-                try:
-                    response_data = resp.json()
-                    print(f"  Response: {response_data}")
-                except:
-                    print(f"  Response: {resp.text}")
-            else:
-                print(f"ERROR uploading SARIF: {resp.status_code}")
-                print(f"  Response body: {resp.text}")
-                
-        except Exception as e:
-            print(f"ERROR uploading SARIF: {e}")
-    
     def generate_report(self, results_file: str, output_md: str = "review-report.md"):
         """Generate a standalone markdown report"""
         findings, summary = self._load_results(results_file)
@@ -423,7 +354,6 @@ def main():
     parser.add_argument("--post-check", action="store_true", help="Post check run to PR")
     parser.add_argument("--post-comments", action="store_true", help="Post inline comments to PR")
     parser.add_argument("--generate-report", action="store_true", help="Generate markdown report")
-    parser.add_argument("--upload-sarif", help="Upload SARIF file to GitHub Code Scanning")
     parser.add_argument("--output", default="review-report.md", help="Report output file")
 
     args = parser.parse_args()
@@ -441,9 +371,6 @@ def main():
             if args.post_comments:
                 print("Posting inline comments...")
                 reporter.post_inline_comments()
-            if args.upload_sarif:
-                print(f"Uploading SARIF: {args.upload_sarif}...")
-                reporter.upload_sarif(args.upload_sarif)
         else:
             print("Not running in GitHub Actions context; report mode only")
 
