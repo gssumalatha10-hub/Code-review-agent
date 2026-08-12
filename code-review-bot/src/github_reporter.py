@@ -337,7 +337,24 @@ Only high-severity issues are shown inline. See run details for complete results
         for col_idx, _ in enumerate(headers, 1):
             ws.column_dimensions[get_column_letter(col_idx)].width = 18
 
-        wb.save(output_xlsx)
+        # Ensure output directory exists
+        out_path = Path(output_xlsx)
+        out_path.parent.mkdir(parents=True, exist_ok=True)
+
+        wb.save(str(out_path))
+
+        # Ensure the file is flushed to disk
+        try:
+            with open(out_path, 'rb') as fh:
+                fh.flush()
+                try:
+                    os.fsync(fh.fileno())
+                except OSError:
+                    pass
+        except Exception:
+            # If we cannot fsync, still continue — saving succeeded in most environments
+            pass
+
         print(f"✓ Generated Excel report: {output_xlsx}")
 
     def _load_results(self, results_file: str):
@@ -380,8 +397,17 @@ Generated: {datetime.now().isoformat()}
 
 """
 
-        with open(output_md, 'w') as f:
+        out_path = Path(output_md)
+        out_path.parent.mkdir(parents=True, exist_ok=True)
+
+        # Write using context manager and ensure data is flushed to disk
+        with open(out_path, 'w', encoding='utf-8') as f:
             f.write(md_content)
+            f.flush()
+            try:
+                os.fsync(f.fileno())
+            except OSError:
+                pass
 
         print(f"✓ Generated report: {output_md}")
 

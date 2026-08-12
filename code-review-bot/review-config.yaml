@@ -45,8 +45,33 @@ analyzers:
     name: "Clang Static Analyzer"
     version: "18.0"
 
+  clang-format:
+    enabled: true
+    name: "clang-format"
+    version: "18.0"
+    style: "file"  # Use .clang-format file in iceoryx repo
+
 # Rule mapping: tool check → standards
 rule_mappings:
+  # Code style - spacing around operators (HIGHEST PRIORITY)
+  - id: "PROJECT-STYLE-001"
+    tool: "clang-format"
+    check: "formatting"
+    severity: "major"
+    standards:
+      - "project-policy"
+    description: "Code formatting style violation - missing spaces around operators"
+    remediation: "Run clang-format to fix formatting. Example: use 'a != b' not 'a!=b', 'a + b' not 'a+b'"
+
+  - id: "PROJECT-STYLE-002"
+    tool: "clang-tidy"
+    check: "readability-operators-representation"
+    severity: "major"
+    standards:
+      - "project-policy"
+    description: "Missing spaces around binary operators"
+    remediation: "Add spaces around operators. Follow the project's clang-format rules"
+
   # Unsafe casts and conversions
   - id: "AUTOSAR-CXX14-CAST-001"
     tool: "clang-tidy"
