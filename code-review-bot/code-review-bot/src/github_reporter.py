@@ -8,7 +8,6 @@ import json
 import os
 import sys
 import base64
-import gzip
 from pathlib import Path
 from typing import List, Dict, Any, Optional
 from dataclasses import dataclass
@@ -249,7 +248,7 @@ Only high-severity issues are shown inline. See run details for complete results
             print(f"ERROR posting PR comment: {e}")
     
     def upload_sarif(self, sarif_file: str):
-        """Upload SARIF to GitHub Code Scanning"""
+        """Upload SARIF to GitHub Code Scanning API"""
         if requests is None:
             print("ERROR: 'requests' is required to upload SARIF. Install with: pip install requests")
             return
@@ -265,38 +264,54 @@ Only high-severity issues are shown inline. See run details for complete results
         owner_repo = self.repo_name
         api_url = f"https://api.github.com/repos/{owner_repo}/code-scanning/sarifs"
 
-        # Read SARIF file
-        with open(sarif_file, 'rb') as f:
-            sarif_bytes = f.read()
+        # Read SARIF file as text
+        with open(sarif_file, 'r') as f:
+            sarif_content = f.read()
 
-        # Gzip compress the SARIF content
-        compressed_sarif = gzip.compress(sarif_bytes)
-        
-        # Base64 encode the compressed SARIF
-        encoded_sarif = base64.b64encode(compressed_sarif).decode('utf-8')
+        # Base64 encode the SARIF content (GitHub API requirement - plain text encoding only, no gzip)
+        encoded_sarif = base64.b64encode(sarif_content.encode('utf-8')).decode('utf-8')
+
+        # Get commit SHA and ref
+        commit_sha = self.pull.head.sha if self.pull else os.getenv("GITHUB_SHA", "")
+        ref = os.getenv("GITHUB_REF", f"refs/heads/{self.pull.head.ref}" if self.pull else "")
+
+        if not commit_sha or not ref:
+            print("ERROR: Missing commit_sha or ref for SARIF upload")
+            return
 
         payload = {
-            "commit_sha": self.pull.head.sha if self.pull else os.getenv("GITHUB_SHA", ""),
-            "ref": os.getenv("GITHUB_REF", f"refs/heads/{self.pull.head.ref}" if self.pull else ""),
+            "commit_sha": commit_sha,
+            "ref": ref,
             "sarif": encoded_sarif,
             "tool_name": "iceoryx-code-review-agent"
         }
 
         headers = {
-            "Authorization": f"token {self.github_token}",
-            "Accept": "application/vnd.github+json"
+            "Authorization": f"Bearer {self.github_token}",
+            "Accept": "application/vnd.github+json",
+            "Content-Type": "application/json"
         }
 
+        print(f"Uploading SARIF to GitHub Code Scanning API...")
+        print(f"  Endpoint: {api_url}")
+        print(f"  Commit SHA: {commit_sha}")
+        print(f"  Ref: {ref}")
+        print(f"  SARIF size: {len(encoded_sarif)} bytes (encoded)")
+
         try:
-            resp = requests.post(api_url, json=payload, headers=headers)
+            resp = requests.post(api_url, json=payload, headers=headers, timeout=30)
+            
             if resp.status_code in (200, 201, 202):
-                print("✓ SARIF uploaded successfully")
+                print("✓ SARIF uploaded successfully to GitHub Code Scanning")
                 try:
-                    print(resp.json())
+                    response_data = resp.json()
+                    print(f"  Response: {response_data}")
                 except:
-                    pass
+                    print(f"  Response: {resp.text}")
             else:
-                print(f"ERROR uploading SARIF: {resp.status_code} {resp.text}")
+                print(f"ERROR uploading SARIF: {resp.status_code}")
+                print(f"  Response body: {resp.text}")
+                
         except Exception as e:
             print(f"ERROR uploading SARIF: {e}")
     
